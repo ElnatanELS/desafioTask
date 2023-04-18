@@ -16,6 +16,11 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { TaskService } from './service/task.service';
+import { ReactiveFormsModule } from '@angular/forms';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -36,8 +41,12 @@ import {MatFormFieldModule} from '@angular/material/form-field';
     MatDialogModule,
     MatIconModule,
     MatFormFieldModule,
+    MatInputModule,
+    ReactiveFormsModule,
+    MatSnackBarModule,
+    CommonModule,
     MatProgressBarModule],
-  providers: [],
+  providers: [TaskService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

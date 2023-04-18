@@ -1,11 +1,10 @@
 <div class="flex-container">
-  <app-card-task></app-card-task>
-  <app-card-task></app-card-task>
-  <app-card-task></app-card-task>
-  <app-card-task></app-card-task>
-  <app-card-task></app-card-task>
-  <app-card-task></app-card-task>
-  <app-card-task></app-card-task>
+  <div *ngFor="let item of list; let i = index">
+
+    <app-card-task [numero]='i' [titulo]='item.titulo' [descricao]='item.descricao' (delete)="onDelete($event)" (edit)="onEdit($event)"></app-card-task>
+  </div>
+
+
 </div>
 <button mat-fab class="fab-main " color="primary" aria-label="Example icon button with a delete icon" (click)="openDialog()">
   <mat-icon>add</mat-icon>

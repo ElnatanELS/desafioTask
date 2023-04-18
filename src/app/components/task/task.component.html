@@ -1,3 +1,25 @@
-<p>
-  task works!
-</p>
+<h1 mat-dialog-title>{{data.type}} Task</h1>
+<form [formGroup]="taskForm" (ngSubmit)="onSubmit()">
+<div mat-dialog-content>
+  <div>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Título</mat-label>
+      <input matInput formControlName="titulo" >
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field appearance="fill">
+      <mat-label>Descrição</mat-label>
+      <textarea matInput formControlName="descricao" ></textarea>
+    </mat-form-field>
+
+  </div>
+
+
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onClose()">Cancelar</button>
+  <button mat-button type="submit"[disabled]="!taskForm.valid" cdkFocusInitial>Ok</button>
+</div>
+</form>

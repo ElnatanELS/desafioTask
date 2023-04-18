@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { TaskService } from 'src/app/service/task.service';
 
 @Component({
   selector: 'app-card-task',
@@ -7,9 +9,33 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CardTaskComponent implements OnInit {
 
-  constructor() { }
+  @Input()
+  numero!: number;
+  @Input()
+  titulo!: string;
+  @Input()
+  descricao!: number;
+
+  @Output() delete = new EventEmitter<number>();
+  @Output() edit = new EventEmitter<number>();
+
+  list: any[]= []
+
+  constructor(private _service:TaskService,  private _snackBar: MatSnackBar,) { }
 
   ngOnInit() {
+    this.list = this._service.get('tasks')
+  }
+
+  onDelete(){
+
+    this.delete.emit(this.numero)
+
+  }
+  onEdit(){
+
+    this.edit.emit(this.numero)
+
   }
 
 }
